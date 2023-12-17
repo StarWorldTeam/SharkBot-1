@@ -1,6 +1,8 @@
 package shark.data.serialization
+import arrow.core.getOrHandle
 import com.fasterxml.jackson.databind.ObjectMapper
 import de.undercouch.bson4jackson.BsonFactory
+import io.kpeg.PegParser
 import io.kpeg.pe.EvalSymbol
 import io.kpeg.pe.Symbol
 import lombok.SneakyThrows
@@ -18,7 +20,7 @@ interface TagLike <T> {
 
 }
 
-object CompoundTagStringifier {
+object CompoundTagSerializer {
 
     /**
      * 将数据文本化
@@ -97,13 +99,21 @@ object CompoundTagStringifier {
             }
         }
     }
-    
-}
 
-object CompoundTagParser {
+    val identifierParser: EvalSymbol<String> = Symbol.rule("Identifier", ignoreWS = false) {
+        seq {
+            +char('#')
+            val part = +char {
+                (it != ':') && (it !in "\n\r") && (it.code != 0) && !(it.isISOControl())
+            }.list().mapPe { it.joinToString("") }.orDefault("")
+            value {
+                part.get
+            }
+        }
+    }
 
     val expressionParser: EvalSymbol<Any?> = Symbol.rule(name = "Expression", ignoreWS = true) {
-        choice(objectParser, arrayParser, numberParser, stringParser, literalParser)
+        choice(objectParser, arrayParser, numberParser, stringParser, literalParser, identifierParser)
     }
 
     val tagParser = Symbol.rule(name = "Tag", ignoreWS = true) {
@@ -134,7 +144,6 @@ object CompoundTagParser {
             seq {
                 +not(char('"', '\\'))
                 val c = +ANY
-
                 value { c.get.toString() }
             },
             literal(len = 2) {
@@ -164,7 +173,9 @@ object CompoundTagParser {
             }.list(separator = char(','))
             +char('}')
             value {
-                CompoundTag().load(hashMapOf(*pairs.get.toTypedArray()))
+                val map = hashMapOf<String, Any?>()
+                pairs.get.forEach { map[it.first] = it.second }
+                CompoundTag().load(map)
             }
         }
     }
@@ -217,6 +228,18 @@ object CompoundTagParser {
         }
     }
 
+    fun parseObject(text: String) = PegParser.parse(symbol = objectParser.value(), text).getOrHandle {
+        error(it.joinToString(separator = "\n"))
+    }
+
+    fun parseArray(text: String) = PegParser.parse(symbol = arrayParser.value(), text).getOrHandle {
+        error(it.joinToString(separator = "\n"))
+    }
+
+    fun parseExpression(text: String) = PegParser.parse(symbol = expressionParser.value(), text).getOrHandle {
+        error(it.joinToString(separator = "\n"))
+    }
+
 }
 
 /**
@@ -249,6 +272,10 @@ class CompoundTag : TagLike <HashMap <String, Any?>>, TagSerializable {
 
     override fun load(tag: CompoundTag) {
         load(tag.saveAsObject())
+    }
+
+    fun parse(text: String) = this.also {
+        load(CompoundTagSerializer.parseObject(text))
     }
 
     @SneakyThrows
@@ -424,7 +451,7 @@ class CompoundTag : TagLike <HashMap <String, Any?>>, TagSerializable {
     operator fun contains(key: Any?) = containsKey(key)
     operator fun set(key: Any?, value: Any?) = put(key, value)
 
-    override fun toString() = CompoundTagStringifier.stringify(this)
+    override fun toString() = CompoundTagSerializer.stringify(this)
 
 }
 
@@ -434,6 +461,10 @@ class ListTag : ArrayList<Any?>(), TagLike <List<Any?>> {
     fun put(value: Any?): ListTag {
         add(value)
         return this
+    }
+
+    fun parse(text: String) = this.also {
+        load(CompoundTagSerializer.parseArray(text))
     }
 
     fun putAll(value: Collection<*>): ListTag {
@@ -497,7 +528,7 @@ class ListTag : ArrayList<Any?>(), TagLike <List<Any?>> {
 
     override fun hashCode() = save().contentHashCode()
 
-    override fun toString() = CompoundTagStringifier.stringify(this)
+    override fun toString() = CompoundTagSerializer.stringify(this)
 
 }
 
