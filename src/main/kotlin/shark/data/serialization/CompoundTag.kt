@@ -104,7 +104,7 @@ object CompoundTagSerializer {
         seq {
             +char('#')
             val part = +char {
-                (it != ':') && (it !in "\n\r") && (it.code != 0) && !(it.isISOControl())
+                (it !in "\n\r{}[],:\"") && (it.code != 0) && !(it.isISOControl())
             }.list().mapPe { it.joinToString("") }.orDefault("")
             value {
                 part.get
@@ -120,7 +120,7 @@ object CompoundTagSerializer {
         choice(objectParser, arrayParser)
     }
 
-    val literalParser: EvalSymbol<Any?> = Symbol.rule(name = "Literal") {
+    val literalParser: EvalSymbol<Any?> = Symbol.rule(name = "Literal", ignoreWS = false) {
         choice(
             literal("true").mapPe { true },
             literal("false").mapPe { false },
@@ -160,7 +160,7 @@ object CompoundTagSerializer {
         }
     }
 
-    val objectParser = Symbol.rule(name = "Object") {
+    val objectParser = Symbol.rule(name = "Object", ignoreWS = true) {
         seq {
             +char('{')
             val pairs = +seq {
@@ -180,7 +180,7 @@ object CompoundTagSerializer {
         }
     }
 
-    val numberParser = Symbol.rule(name = "Number") {
+    val numberParser = Symbol.rule(name = "Number", ignoreWS = false) {
         seq {
             val sign = +literal("-").orDefault("").mapPe { if (it == "-") -1 else 1  }
             val absNumber = +choice(literal("0"), seq {
