@@ -1,8 +1,8 @@
-<div style="text-align:center">
+<div style="alignment: center">
 
 ![logo](./logo.png)
-# SharkBot
 
+# SharkBot
 
 [![jitpack](https://jitpack.io/v/StarWorldTeam/SharkBot.svg)](https://jitpack.io/#StarWorldTeam/SharkBot)
 [![build](https://img.shields.io/github/actions/workflow/status/StarWorldTeam/SharkBot/build.yml?label=Build)](https://github.com/StarWorldTeam/SharkBot/actions/workflows/build.yml)
