@@ -11,6 +11,7 @@ import shark.event.network.CommandInteractionEvent
 import shark.event.network.CommandSetupEvent
 import shark.network.chat.Component
 import shark.network.chat.MutableComponent
+import shark.util.Promise
 import java.util.*
 
 enum class CommandType {
@@ -106,10 +107,8 @@ abstract class Command : Registrable {
     open fun getCommandTranslation() = defaultCommandTranslation
 
     open fun getCommandType() = CommandType.SLASH
-    abstract fun run(event: CommandInteractionEvent)
-    open fun setup(event: CommandSetupEvent) {
-
-    }
+    abstract fun run(event: CommandInteractionEvent): Promise<Any?>
+    open fun setup(event: CommandSetupEvent) {}
 
     fun getLocation() = if (location != null) location!! else SharkRegistries.commands[this].also {
         this.location = it

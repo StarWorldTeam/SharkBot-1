@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 class CompoundTagTest {
 
     @Test
-    fun syntax() {
+    fun `Compound Tag Syntax Test`() {
         val text =
             """
             {

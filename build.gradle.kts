@@ -53,6 +53,8 @@ dependencies {
 	implementation("com.j2html:j2html:1.6.0")
 	implementation("com.github.markwhitaker:RegexToolbox.kt:3.0.0")
 	implementation("org.jsoup:jsoup:1.15.4")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2")
+
 }
 
 tasks.withType<KotlinCompile> {

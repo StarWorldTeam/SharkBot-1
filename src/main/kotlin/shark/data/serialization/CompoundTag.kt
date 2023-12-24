@@ -6,8 +6,8 @@ import io.kpeg.PegParser
 import io.kpeg.pe.EvalSymbol
 import io.kpeg.pe.Symbol
 import lombok.SneakyThrows
-import shark.util.ArrayTypeReference
-import shark.util.DictTypeReference
+import shark.util.AnyListTypeReference
+import shark.util.StringAnyNullableMapTypeReference
 import shark.util.StringTypeReference
 import java.math.BigDecimal
 import java.util.*
@@ -92,7 +92,7 @@ object CompoundTagSerializer {
                     CompoundTag().load(
                         mapper.readValue(
                             mapper.writeValueAsString(obj),
-                            DictTypeReference
+                            StringAnyNullableMapTypeReference
                         )!!
                     )
                 )
@@ -291,7 +291,7 @@ class CompoundTag : TagLike <HashMap <String, Any?>>, TagSerializable {
             *Objects.requireNonNullElse(
                 mapper.readValue(
                     bytes,
-                    DictTypeReference
+                    StringAnyNullableMapTypeReference
                 ),
                 map
             ).entries.map { Pair(it.key, it.value) }.toTypedArray()
@@ -492,7 +492,7 @@ class ListTag : ArrayList<Any?>(), TagLike <List<Any?>> {
     @SneakyThrows
     fun load(bytes: ByteArray?): ListTag {
         val mapper = ObjectMapper(BsonFactory())
-        val value = mapper.readValue(bytes, ArrayTypeReference)
+        val value = mapper.readValue(bytes, AnyListTypeReference)
         this.clear()
         if (value != null) this.addAll(value)
         this.toList().clear()

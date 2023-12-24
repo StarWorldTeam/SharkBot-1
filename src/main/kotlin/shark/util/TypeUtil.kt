@@ -3,5 +3,6 @@ package shark.util
 import com.fasterxml.jackson.core.type.TypeReference
 
 object StringTypeReference : TypeReference<String>()
-object DictTypeReference : TypeReference<Map<String, Any?>>()
-object ArrayTypeReference : TypeReference<List<Any?>>()
+object StringAnyNullableMapTypeReference : TypeReference<Map<String, Any?>>()
+object AnyAnyNullableMapTypeReference : TypeReference<Map<Any, Any?>>()
+object AnyListTypeReference : TypeReference<List<Any?>>()
