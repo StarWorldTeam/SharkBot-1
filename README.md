@@ -1,4 +1,5 @@
-<div style="alignment: center">
+<!--suppress HtmlDeprecatedAttribute -->
+<div align="center" style="text-align: center; alignment: center; align-content: center;">
 
 ![logo](./logo.png)
 
