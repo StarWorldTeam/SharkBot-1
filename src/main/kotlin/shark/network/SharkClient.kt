@@ -4,8 +4,10 @@ import com.neovisionaries.ws.client.WebSocketFactory
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.commands.build.CommandData
+import net.dv8tion.jda.api.requests.GatewayIntent
 import okhttp3.OkHttpClient
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -24,18 +26,18 @@ class SharkClientConfig {
     /** 网络代理 */
     class ProxyConfig {
         /** 是否启用 */
-        val enabled = false
+        var enabled = false
         /** 地址 */
-        val host = "127.0.0.1"
+        var host = "127.0.0.1"
         /** 端口 */
-        val port = 7890
+        var port = 7890
     }
     /** 默认语言 */
-    val defaultLanguage = "zh_cn"
+    var defaultLanguage = "zh_cn"
     /** 登录令牌 */
-    val token: String = ""
+    var token: String = ""
     /** 代理设置 */
-    val proxy: ProxyConfig = ProxyConfig()
+    var proxy: ProxyConfig = ProxyConfig()
 }
 
 /** 事件监听器 */
@@ -43,8 +45,12 @@ class SharkClientEventListener(val client: SharkClient) : ListenerAdapter() {
 
     override fun onGenericCommandInteraction(event: GenericCommandInteractionEvent) {
         client.commands.filter { it.second.name == event.name }.forEach {
-            it.first.run(CommandInteractionEvent(it.first, event))
+            it.first.run(CommandInteractionEvent(it.first, event, client))
         }
+    }
+
+    override fun onMessageReceived(event: MessageReceivedEvent) {
+        client.eventBus.emit(shark.event.network.MessageReceivedEvent(event, client))
     }
 
 }
@@ -62,6 +68,7 @@ open class SharkClient(val config: SharkClientConfig) {
 
     /** 获取Discord客户端，登录后才可以获取 */
     open fun getClient() = Objects.requireNonNull(client)!!
+    open fun getClientOptional() = client
 
     /** 登录 */
     open fun login() = this.also {
@@ -76,6 +83,7 @@ open class SharkClient(val config: SharkClientConfig) {
                     if (config.proxy.enabled) it.proxySettings.setHost(config.proxy.host).port = config.proxy.port
                 }
             )
+            .enableIntents(listOf(*GatewayIntent.values()))
             .addEventListeners(SharkClientEventListener(this))
             .build()
         getClient().awaitReady()

@@ -1,11 +1,14 @@
 package shark.data.plugin
 
+import org.springframework.beans.factory.support.DefaultListableBeanFactory
+import org.springframework.context.annotation.ClassPathBeanDefinitionScanner
+import shark.SharkBot
 import shark.SharkBot.baseDir
 import shark.event.EventBus
 import shark.event.application.plugin.PluginLoadEvent
 import java.io.File
 import java.nio.file.Path
-import java.util.function.Consumer
+
 
 abstract class AbstractPluginLoader {
 
@@ -23,6 +26,7 @@ class PluginConfig (
     val main: String = "",
     val description: String = "",
     val version: String = "0.0.0",
+    val springScanningPackages: Array<String> = arrayOf()
 )
 
 class PluginLoader : AbstractPluginLoader() {
@@ -31,7 +35,7 @@ class PluginLoader : AbstractPluginLoader() {
     override val plugins: ArrayList<IPlugin> = arrayListOf()
     override val eventBus = EventBus(this.javaClass)
 
-    fun register() = this.also { REGISTERED.add(it) }
+    fun register() = this.also { registered.add(it) }
 
     init {
         pluginTypes.add(".jar")
@@ -62,17 +66,22 @@ class PluginLoader : AbstractPluginLoader() {
 
     @Synchronized
     fun loadPlugins() {
-        plugins.forEach(
-            Consumer { plugin ->
-                val event = PluginLoadEvent(plugin, this)
-                event.setEventBus(eventBus)
-                plugin.load(event)
+        plugins.forEach { plugin ->
+            val event = PluginLoadEvent(plugin, this)
+            event.setEventBus(eventBus)
+            plugin.load(event)
+        }
+        val beanFactory = SharkBot.application.context().autowireCapableBeanFactory as DefaultListableBeanFactory
+        val scanner = ClassPathBeanDefinitionScanner(beanFactory, false)
+        plugins.forEach { plugin ->
+            plugin.config?.springScanningPackages?.let {
+                if (it.isNotEmpty()) scanner.scan(*it)
             }
-        )
+        }
     }
 
     companion object {
-        val REGISTERED = mutableListOf<PluginLoader>()
+        val registered = mutableListOf<PluginLoader>()
         fun getPluginPath(path: String?): Path {
             return Path.of(
                 baseDir,

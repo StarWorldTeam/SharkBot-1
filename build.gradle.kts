@@ -10,6 +10,12 @@ plugins {
 	id("maven-publish")
 }
 
+buildscript {
+	dependencies {
+		classpath("org.jetbrains.dokka:dokka-base:1.9.10")
+	}
+}
+
 group = "shark"
 version = "1.0.0"
 
@@ -54,6 +60,7 @@ dependencies {
 	implementation("com.github.markwhitaker:RegexToolbox.kt:3.0.0")
 	implementation("org.jsoup:jsoup:1.15.4")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2")
+	implementation("org.thymeleaf:thymeleaf:3.1.2.RELEASE")
 
 }
 
@@ -71,5 +78,12 @@ tasks.withType<Test> {
 configure<PublishingExtension> {
 	publications.create<MavenPublication>("maven") {
 		from(components.getByName("kotlin"))
+	}
+}
+
+
+tasks.dokkaHtml {
+	pluginConfiguration<org.jetbrains.dokka.base.DokkaBase, org.jetbrains.dokka.base.DokkaBaseConfiguration> {
+		footerMessage = "Copyright © StarWorld Team"
 	}
 }

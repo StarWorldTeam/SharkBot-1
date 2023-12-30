@@ -3,7 +3,7 @@ package shark
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import org.springframework.boot.builder.SpringApplicationBuilder
 import shark.data.plugin.PluginLoader
 import shark.data.registry.ResourceLocation
 import shark.data.resource.ResourceLoader
@@ -19,9 +19,19 @@ import shark.network.SharkClientConfig
 import shark.util.ConfigUtil
 import sharkbot.SharkBotDefaultPlugin
 import java.nio.file.Path
+import java.util.Properties
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["sharkbot"])
 class SharkBotApplication
+
+class SharkApplicationConfig {
+
+    var headless = true
+    var webPanel = false
+    var webPort = 8080
+    var customSpringProperties: Map<String, Any?> = mapOf()
+
+}
 
 object SharkBot {
 
@@ -29,6 +39,7 @@ object SharkBot {
         it.mkdirs(); it.path
     }
     val sharkConfig = ConfigUtil.useConfig<SharkClientConfig>(ResourceLocation.of("shark"))
+    val applicationConfig = ConfigUtil.useConfig<SharkApplicationConfig>(ResourceLocation.of("application"))
     val logger: Logger = LoggerFactory.getLogger(SharkBotApplication::class.java)
     val client = SharkClient(sharkConfig)
     val eventBus = EventBus(this::class)
@@ -38,6 +49,14 @@ object SharkBot {
         eventBus.emit(DiscordSetupEvent())
         eventBus.emit(CommonSetupEvent())
     }
+    val application: SpringApplicationBuilder = SpringApplicationBuilder(SharkBotApplication::class.java)
+        .headless(applicationConfig.headless)
+        .properties(
+            Properties().also {
+                it["server.port"] = applicationConfig.webPort
+                it.putAll(applicationConfig.customSpringProperties)
+            }
+        )
     val pluginLoader = PluginLoader().register()
     val resourceLoader = ResourceLoader()
 }
@@ -45,7 +64,7 @@ object SharkBot {
 class WrappedSharkEvent(val wrappedSharkEvent: WrappedEvent <Event>, val shark: SharkBot) : Event()
 
 fun main(args: Array<String>) {
-    runApplication<SharkBotApplication>(*args)
+    SharkBot.application.run(*args)
     SharkBot.eventBus.on { event ->
         SharkBot.pluginLoader.plugins.forEach {
             it.eventBus?.emit(WrappedSharkEvent(event, SharkBot))
@@ -56,7 +75,7 @@ fun main(args: Array<String>) {
     SharkBot.pluginLoader.loadPlugins()
     SharkBot.resourceLoader.load(
         ResourceLoaderOptions(
-            pluginLoaders = PluginLoader.REGISTERED
+            pluginLoaders = PluginLoader.registered
         )
     )
     SharkBot.eventBus.emit(ClientSetupEvent())

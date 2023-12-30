@@ -13,6 +13,9 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import shark.data.serialization.CompoundTagSerializer
 import java.io.InputStream
+import java.util.*
+import java.util.stream.Stream
+import java.util.stream.StreamSupport
 import kotlin.collections.set
 
 enum class RequestMethod {
@@ -128,5 +131,13 @@ object IOUtil {
             reject(throwable)
         }
     }
+
+    fun <T> stream(iterable: Iterable<T>) = stream(iterable.iterator())
+    fun <T> stream(iterator: Iterator<T>): Stream<T> {
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, 0), false)
+    }
+
+    fun <T> stream(sequence: Sequence<T>) = stream(sequence.iterator())
+
 
 }

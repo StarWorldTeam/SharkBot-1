@@ -68,7 +68,6 @@ open class CommandTranslation(private val command: shark.network.command.Command
                 }
                 .toList()
         ).toTypedArray() else arrayOf()
-
     }
     open fun getCommandDescription() = Component.translatable("network.command.${getCommand().getLocation().namespace}.${command.getLocation().path.split("/").joinToString("-")}.description")
 

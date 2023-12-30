@@ -21,6 +21,15 @@ class AggregateError(val errors: Array<Throwable>, message: String?): RuntimeExc
 @Suppress("UNUSED_PARAMETER")
 fun void (vararg value: Any?) = Void
 
+/**
+ * 执行一个函数并忽视这个函数的结果
+ */
+fun runWithNoError(block: Callable) {
+    try {
+        block()
+    } catch (_: Throwable) {}
+}
+
 typealias PromiseFunction <T> = suspend PromiseResolver<T>.() -> Unit
 
 /** 异步执行 */
@@ -74,14 +83,24 @@ interface Promise<out T> {
 
     companion object {
 
-        fun delay(timeMillis: Long) = promise {
-            kotlinx.coroutines.delay(timeMillis)
+        fun delay(tileMillis: Long) = promise {
+            kotlinx.coroutines.delay(tileMillis)
             resolve()
         }
 
         fun delay(duration: Duration) = promise {
             kotlinx.coroutines.delay(duration)
             resolve()
+        }
+
+        fun <T> delay(timeMillis: Long, block: suspend () -> T) = promise {
+            kotlinx.coroutines.delay(timeMillis)
+            resolve(block())
+        }
+
+        fun <T> delay(duration: Duration, block: suspend () -> T) = promise {
+            kotlinx.coroutines.delay(duration)
+            resolve(block)
         }
 
         /** 创建Promise控制器 */
@@ -345,9 +364,8 @@ open class PromiseImpl<T> internal constructor(func: PromiseFunction<T>) : Promi
     }
 
     override fun join() = this.also {
-        runBlocking {
-            job.join()
-            state = PromiseState.STOPPED
+        runWithNoError  {
+            awaitSync()
         }
     }
 

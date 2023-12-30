@@ -6,7 +6,7 @@ import shark.util.Promise
 
 class LocaleCommand : Command() {
 
-    override fun run(event: CommandInteractionEvent): Promise<Any?> {
+    override fun run(event: CommandInteractionEvent): Promise<Nothing> {
         TODO("Not yet implemented")
     }
 

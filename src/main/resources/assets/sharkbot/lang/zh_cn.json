@@ -1,0 +1,8 @@
+{
+    "sharkbot.web.panel.title": "面板",
+    "sharkbot.web.panel.guild": "服务器",
+    "sharkbot.web.panel.statistics": "统计",
+    "sharkbot.web.panel.createdAt": "创建时间",
+    "sharkbot.web.panel.statistics.members": "%s 个成员",
+    "sharkbot.web.panel.statistics.channels": "%s 个频道"
+}

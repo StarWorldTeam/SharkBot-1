@@ -9,7 +9,7 @@ open class Locale {
     protected open val language: HashMap<String, String> = hashMapOf()
     val name: String
         get() = Optional.ofNullable(
-            INSTANCES.entries.find { (_, value) -> value == this }
+            instances.entries.find { (_, value) -> value == this }
         ).map { it.key }.orElse("unknown")
 
     open fun toDiscord() = DiscordLocale.from(this["locale.discord.localeTag"])
@@ -38,14 +38,14 @@ open class Locale {
     }
 
     companion object {
-        val INSTANCES: HashMap<String, Locale> = HashMap()
+        val instances: HashMap<String, Locale> = HashMap()
 
-        operator fun get(name: String) = INSTANCES.getOrDefault(name, default)
+        operator fun get(name: String) = instances.getOrDefault(name, default)
         operator fun get(locale: DiscordLocale) = fromDiscord(locale)
-        operator fun set(name: String, locale: Locale) = INSTANCES.put(name, locale)
+        operator fun set(name: String, locale: Locale) = instances.put(name, locale)
 
         operator fun contains(locale: DiscordLocale) = fromDiscord(locale) != null
-        operator fun contains(key: String) = INSTANCES.containsKey(key)
+        operator fun contains(key: String) = instances.containsKey(key)
 
         val empty = object : Locale() {
             override val language: HashMap<String, String>
@@ -53,14 +53,14 @@ open class Locale {
             override fun putTranslation(key: String, value: String) {}
         }
         val default: Locale
-            get() = INSTANCES[SharkBot.sharkConfig.defaultLanguage] ?: empty
+            get() = instances[SharkBot.sharkConfig.defaultLanguage] ?: empty
 
-        fun fromDiscord(locale: DiscordLocale) = INSTANCES.values.find {
+        fun fromDiscord(locale: DiscordLocale) = instances.values.find {
             it.getOrDefault("locale.discord.localeTag", "unknown") == locale.locale
         }
 
         fun getByName(name: String): Locale {
-            return INSTANCES.getOrDefault(name, default)
+            return instances.getOrDefault(name, default)
         }
     }
 }

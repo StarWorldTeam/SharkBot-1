@@ -32,22 +32,27 @@ class FileDataHolder<T>(
     private val name: String,
     val file: File,
     private val mapper: ObjectMapper,
-    private val clazz: Class<T>?,
+    clazz: Class<T>,
     private val defaultValue: Supplier<T>,
     private val type: DataUtil.FileType
 ) : DataHolder<T> {
 
+    var cache: T = mapper.readValue(file, clazz)
+
+    override fun getDefaultValue() = defaultValue.get()
+
     @SneakyThrows
-    override fun get(): T = mapper.readValue(file, clazz)
+    override fun get() = cache
 
     @SneakyThrows
     override fun set(value: T) = this.also {
-        mapper.writeValue(file, value)
+        cache = value
+        mapper.writeValue(file, cache)
     }
 
     @SneakyThrows
     override fun reset() {
-        mapper.writeValue(file, defaultValue)
+        mapper.writeValue(file, defaultValue.get())
     }
 
 }
@@ -68,18 +73,21 @@ object DataUtil {
     }
 
     @SneakyThrows
-    inline fun <reified T : Any> useData(
+    inline fun <reified T : Any> useSharkFileData(
         name: String,
         fileType: FileType,
         noinline defaultValue: () -> T = { T::class.createInstance() }
     ): DataHolder<T> {
+        var defaultValueSupplier = defaultValue
         val mapper = fileType.getMapper()
         val file = getDataFile(name, fileType.type)
         if (!file.exists()) {
             file.createNewFile()
-            mapper.writeValue(file, defaultValue())
+            val value = defaultValue()
+            defaultValueSupplier = { value }
+            mapper.writeValue(file, defaultValueSupplier())
         }
-        return FileDataHolder(name, file, mapper, T::class.java, defaultValue, fileType)
+        return FileDataHolder(name, file, mapper, T::class.java, defaultValueSupplier, fileType)
     }
 
     enum class FileType(val type: String, private val mapperGetter: () -> ObjectMapper) {

@@ -1,5 +1,6 @@
 package shark.data.entity.user
 
+import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.interactions.DiscordLocale
 import net.dv8tion.jda.api.interactions.Interaction
@@ -8,6 +9,7 @@ import shark.data.registry.ResourceLocation
 import shark.data.resource.Locale
 import shark.data.serialization.CompoundTag
 import shark.event.network.InteractionEvent
+import shark.network.SharkClient
 import shark.util.DataHolder
 import shark.util.DataUtil
 
@@ -26,10 +28,15 @@ object UserMetaField {
 
 }
 
-class User(private val dataHolder: DataHolder<UserData>) {
+class User(private val dataHolder: DataHolder<UserData>, private val id: String) {
 
     private val tag: CompoundTag = CompoundTag()
     private val meta: CompoundTag = CompoundTag()
+
+    fun getName() = SharkBot.client.getClient().getUserById(id)!!.name
+    fun getEffectiveName() = SharkBot.client.getClient().getUserById(id)!!.effectiveName
+    fun getMemberEffectiveName(guild: Guild) = guild.getMemberById(id)!!.effectiveName
+    fun getMemberNickName(guild: Guild) = guild.getMemberById(id)!!.nickname
 
     fun getDataHolder() = dataHolder
 
@@ -62,11 +69,12 @@ class User(private val dataHolder: DataHolder<UserData>) {
 
     companion object {
         val users: ArrayList<User> = arrayListOf()
-        fun of(id: String) = User(DataUtil.useData("users/$id", DataUtil.FileType.BSON)).also(users::add)
+        fun of(id: String) = User(DataUtil.useSharkFileData("users/$id", DataUtil.FileType.BSON), id).also(users::add)
         fun of(user: net.dv8tion.jda.api.entities.User) = of(user.id)
         fun of(member: Member) = of(member.user)
         fun of(interaction: Interaction) = of(interaction.user)
         fun of(interactionEvent: InteractionEvent<*>) = of(interactionEvent.getInteraction())
+        fun of(bot: SharkClient) = of(bot.getClient().selfUser)
     }
 
     init {

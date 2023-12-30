@@ -1,0 +1,8 @@
+{
+    "sharkbot.web.panel.title": "Panel",
+    "sharkbot.web.panel.guild": "Guild",
+    "sharkbot.web.panel.statistics": "Statistics",
+    "sharkbot.web.panel.createdAt": "Created At",
+    "sharkbot.web.panel.statistics.members": "%s Member(s)",
+    "sharkbot.web.panel.statistics.channels": "%s Channel(s)"
+}
