@@ -81,6 +81,21 @@ configure<PublishingExtension> {
 	}
 }
 
+tasks.withType<ProcessResources> {
+	val resourceTargets = listOf("META-INF/shark.yml")
+	val replaceProperties = mapOf(
+		Pair(
+			"gradle",
+			mapOf(
+				Pair("gradle", gradle),
+				Pair("project", project)
+			)
+		)
+	)
+	filesMatching(resourceTargets) {
+		expand(replaceProperties)
+	}
+}
 
 tasks.dokkaHtml {
 	pluginConfiguration<org.jetbrains.dokka.base.DokkaBase, org.jetbrains.dokka.base.DokkaBaseConfiguration> {

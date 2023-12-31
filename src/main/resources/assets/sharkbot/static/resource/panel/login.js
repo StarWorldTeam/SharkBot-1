@@ -1,9 +1,13 @@
+/**
+ * @param name {string}
+ * @returns {string | undefined}
+ */
 export function getCookie(name) {
-    let item, result, cookies =document.cookie.split(";");
+    let item, result, cookies = document.cookie.split(";");
 
     for (let i = 0; i < cookies.length; i++) {
         item = cookies[i].substring(0, cookies[i].indexOf("="));
-        result = cookies[i].substring(cookies[i].indexOf("=")+1);
+        result = cookies[i].substring(cookies[i].indexOf("=") + 1);
         item = item.replace(/^\s+|\s+$/g,"");
         if (item === name) {
             return decodeURI(result);
@@ -11,11 +15,17 @@ export function getCookie(name) {
     }
 }
 
+/**
+ * @return {string}
+ */
 export function getToken() {
     let token = getCookie("sharkBotAccessToken");
     if (token) return token;
 }
 
+/**
+ * @return {string}
+ */
 export function getTokenElseLogin() {
     let token = getToken();
     if (token) return token;

@@ -195,5 +195,7 @@ class ResourceLoader {
         fun splitPath(path: Path): List<String> {
             return splitPath(path.toString())
         }
+
     }
+
 }
