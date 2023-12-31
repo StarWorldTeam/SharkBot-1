@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--suppress ALL -->
+<html lang>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="${locale.get('sharkbot.web.login.title')}"></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet"/>
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        rel="stylesheet"
+    />
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+</head>
+<body>
+<div class="container" style="margin-top: calc(var(--mdb-gutter-x)*2.5)">
+    <div style="display: none; margin-bottom: calc(var(--mdb-gutter-x)*2.5)" id="error-alert" data-mdb-alert-init="" class="alert alert-danger" role="alert" data-mdb-color="danger" data-mdb-alert-initialized="true">
+        <i class="fas fa-times-circle me-3"></i>
+        <span th:text="${locale.get('sharkbot.web.login.failure')}"></span>
+    </div>
+    <form action="/api/login" method="post">
+        <!--suppress HtmlFormInputWithoutLabel -->
+        <input style="display: none" th:value="${redirect}" name="redirect"/>
+        <div data-mdb-input-init class="form-outline mb-4">
+            <input name="userName" type="text" id="userName" class="form-control" />
+            <label class="form-label" for="userName" th:text="${locale.get('sharkbot.web.login.userName')}"></label>
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+            <input name="passWord" type="password" id="passWord" class="form-control" />
+            <label class="form-label" for="passWord" th:text="${locale.get('sharkbot.web.login.passWord')}"></label>
+        </div>
+        <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block" th:text="${locale.get('sharkbot.web.login.login')}">></button>
+    </form>
+</div>
+<script type="module">
+    import { Input, Ripple, initMDB } from "https://unpkg.com/mdb-ui-kit@7.1.0/js/mdb.es.min.js";
+    initMDB({ Input, Ripple });
+
+    const search = new URLSearchParams(location.search);
+
+    const alert = document.getElementById("error-alert")
+    if (search.get("sharkLoginStatus") == "failure") alert.style.display = "block";
+
+</script>
+</body>
+</html>

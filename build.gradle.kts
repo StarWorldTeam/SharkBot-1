@@ -57,7 +57,7 @@ dependencies {
 	implementation("net.dv8tion:JDA:5.0.0-beta.15")
 	implementation("de.undercouch:bson4jackson:2.15.0")
 	implementation("com.j2html:j2html:1.6.0")
-	implementation("com.github.markwhitaker:RegexToolbox.kt:3.0.0")
+	implementation("com.auth0:java-jwt:4.4.0")
 	implementation("org.jsoup:jsoup:1.15.4")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2")
 	implementation("org.thymeleaf:thymeleaf:3.1.2.RELEASE")

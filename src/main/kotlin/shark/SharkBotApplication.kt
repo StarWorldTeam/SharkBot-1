@@ -19,7 +19,7 @@ import shark.network.SharkClientConfig
 import shark.util.ConfigUtil
 import sharkbot.SharkBotDefaultPlugin
 import java.nio.file.Path
-import java.util.Properties
+import java.util.*
 
 @SpringBootApplication(scanBasePackages = ["sharkbot"])
 class SharkBotApplication
@@ -30,11 +30,13 @@ class SharkApplicationConfig {
     var webPanel = false
     var webPort = 8080
     var customSpringProperties: Map<String, Any?> = mapOf()
+    var sharkBotUsers = mutableMapOf<String, String>()
 
 }
 
 object SharkBot {
 
+    val startTime = Date()
     val baseDir: String = Path.of(System.getProperty("user.dir"), "shark").toFile().let {
         it.mkdirs(); it.path
     }
@@ -46,6 +48,9 @@ object SharkBot {
     val clientNetworkThread = Thread {
         client.login()
         client.getClient().awaitReady()
+        if ("bot" !in applicationConfig.sharkBotUsers) {
+            applicationConfig.sharkBotUsers["bot"] = sharkConfig.token
+        }
         eventBus.emit(DiscordSetupEvent())
         eventBus.emit(CommonSetupEvent())
     }

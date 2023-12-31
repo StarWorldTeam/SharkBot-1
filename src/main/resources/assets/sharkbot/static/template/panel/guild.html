@@ -12,36 +12,24 @@
     <table class="table align-middle mb-0 bg-white shadow table-hover">
         <thead class="bg-light">
         <tr>
-            <th th:text="${locale.get('sharkbot.web.panel.guild')}"></th>
-            <th th:text="${locale.get('sharkbot.web.panel.statistics')}"></th>
+            <th th:text="${locale.get('sharkbot.web.panel.channel')}"></th>
             <th th:text="${locale.get('sharkbot.web.panel.createdAt')}"></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="guild : ${guilds}">
+        <tr th:each="channel : ${guild.getChannels()}">
             <td>
-                <a th:href="*{'/panel/guild/' + guild.getIdLong()}">
+                <a th:href="*{'/panel/guild/' + guild.getIdLong() + '/' + channel.getIdLong()}">
                     <div class="d-flex align-items-center">
-                        <img
-                            th:src="*{guild.getIconUrl()}"
-                            src="about:blank"
-                            alt="icon"
-                            style="width: 45px; height: 45px"
-                            class="rounded-circle"
-                        />
                         <div class="ms-3">
-                            <p class="fw-bold mb-1" th:text="*{guild.getName()}"></p>
-                            <p class="text-muted mb-0" th:text="*{guild.getIdLong()}"></p>
+                            <p class="fw-bold mb-1" th:text="*{channel.getName()}"></p>
+                            <p class="text-muted mb-0" th:text="*{channel.getIdLong()}"></p>
                         </div>
                     </div>
                 </a>
             </td>
             <td>
-                <p class="fw-normal mb-1" th:text="*{locale.format('sharkbot.web.panel.statistics.members', guild.getMembers().size)}"></p>
-                <p class="fw-normal mb-0" th:text="*{locale.format('sharkbot.web.panel.statistics.channels', guild.getChannels().size)}"></p>
-            </td>
-            <td>
-                <p class="fw-normal mb-1" th:text="*{guild.getTimeCreated()}"></p>
+                <p class="fw-normal mb-1" th:text="*{channel.getTimeCreated()}"></p>
             </td>
         </tr>
         </tbody>
