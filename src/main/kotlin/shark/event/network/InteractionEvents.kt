@@ -1,5 +1,6 @@
 package shark.event.network
 
+import kodash.coroutine.promise
 import net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent
 import net.dv8tion.jda.api.interactions.Interaction
 import net.dv8tion.jda.api.utils.messages.MessageCreateData
@@ -7,7 +8,6 @@ import shark.event.Event
 import shark.network.SharkClient
 import shark.network.chat.CommandSession
 import shark.network.command.Command
-import shark.util.promise
 
 open class InteractionEvent<T : Interaction>(private val interaction: T, private val client: SharkClient) : Event() {
 

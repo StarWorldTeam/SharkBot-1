@@ -61,6 +61,7 @@ dependencies {
 	implementation("org.jsoup:jsoup:1.15.4")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC2")
 	implementation("org.thymeleaf:thymeleaf:3.1.2.RELEASE")
+	implementation("com.github.StarWorldTeam:Kodash:bc2f8639b4")
 
 }
 

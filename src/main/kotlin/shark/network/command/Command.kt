@@ -1,5 +1,6 @@
 package shark.network.command
 
+import kodash.coroutine.Promise
 import net.dv8tion.jda.api.interactions.DiscordLocale
 import net.dv8tion.jda.api.interactions.commands.Command
 import net.dv8tion.jda.api.interactions.commands.build.Commands
@@ -11,7 +12,6 @@ import shark.event.network.CommandInteractionEvent
 import shark.event.network.CommandSetupEvent
 import shark.network.chat.Component
 import shark.network.chat.MutableComponent
-import shark.util.Promise
 import java.util.*
 
 enum class CommandType {

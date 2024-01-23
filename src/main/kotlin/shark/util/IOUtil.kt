@@ -5,6 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import de.undercouch.bson4jackson.BsonFactory
+import kodash.coroutine.Promise
+import kodash.coroutine.promise
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody
