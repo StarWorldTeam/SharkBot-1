@@ -469,18 +469,7 @@ $dokka.location:shark.network/SharkClientEventListener/client/#/PointingToDeclar
 $dokka.location:shark.network/SharkClientEventListener/onGenericCommandInteraction/#net.dv8tion.jda.api.events.interaction.command.GenericCommandInteractionEvent/PointingToDeclaration/-shark-bot/shark.network/-shark-client-event-listener/on-generic-command-interaction.html
 $dokka.location:shark.network/SharkClientEventListener/onMessageReceived/#net.dv8tion.jda.api.events.message.MessageReceivedEvent/PointingToDeclaration/-shark-bot/shark.network/-shark-client-event-listener/on-message-received.html
 $dokka.location:shark.util////PointingToDeclaration/-shark-bot/shark.util/index.html
-$dokka.location:shark.util//assertNotStopped/shark.util.Promise[*]#/PointingToDeclaration/-shark-bot/shark.util/assert-not-stopped.html
-$dokka.location:shark.util//asyncFunction/#kotlin.coroutines.SuspendFunction1[shark.util.PromiseResolver[TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/-shark-bot/shark.util/async-function.html
-$dokka.location:shark.util//asyncFunction1/#kotlin.coroutines.SuspendFunction2[shark.util.PromiseResolver[TypeParam(bounds=[kotlin.Any?])],TypeParam(bounds=[kotlin.Any?]),kotlin.Unit]/PointingToDeclaration/-shark-bot/shark.util/async-function1.html
 $dokka.location:shark.util//mapToJson/#kotlin.collections.Map[kotlin.String,kotlin.Any?]/PointingToDeclaration/-shark-bot/shark.util/map-to-json.html
-$dokka.location:shark.util//promise/#kotlin.coroutines.SuspendFunction1[shark.util.PromiseResolver[TypeParam(bounds=[kotlin.Any?])],kotlin.Unit]/PointingToDeclaration/-shark-bot/shark.util/promise.html
-$dokka.location:shark.util//promiseVoid/#kotlin.coroutines.SuspendFunction1[shark.util.PromiseResolver[shark.util.Void],kotlin.Unit]/PointingToDeclaration/-shark-bot/shark.util/promise-void.html
-$dokka.location:shark.util//resolve/shark.util.PromiseResolver[shark.util.Void]#/PointingToDeclaration/-shark-bot/shark.util/resolve.html
-$dokka.location:shark.util//runWithNoError/#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/-shark-bot/shark.util/run-with-no-error.html
-$dokka.location:shark.util//void/#kotlin.Array[kotlin.Any?]/PointingToDeclaration/-shark-bot/shark.util/void.html
-$dokka.location:shark.util/AggregateError///PointingToDeclaration/-shark-bot/shark.util/-aggregate-error/index.html
-$dokka.location:shark.util/AggregateError/AggregateError/#kotlin.Array[kotlin.Throwable]#kotlin.String?/PointingToDeclaration/-shark-bot/shark.util/-aggregate-error/-aggregate-error.html
-$dokka.location:shark.util/AggregateError/errors/#/PointingToDeclaration/-shark-bot/shark.util/-aggregate-error/errors.html
 $dokka.location:shark.util/AnyAnyNullableMapTypeReference///PointingToDeclaration/-shark-bot/shark.util/-any-any-nullable-map-type-reference/index.html
 $dokka.location:shark.util/AnyListTypeReference///PointingToDeclaration/-shark-bot/shark.util/-any-list-type-reference/index.html
 $dokka.location:shark.util/Callable///PointingToDeclaration/-shark-bot/shark.util/-callable/index.html
@@ -538,58 +527,6 @@ $dokka.location:shark.util/MathUtil/randomDoubleGenerator/#kotlin.random.Random/
 $dokka.location:shark.util/MathUtil/randomFloatGenerator/#kotlin.random.Random/PointingToDeclaration/-shark-bot/shark.util/-math-util/random-float-generator.html
 $dokka.location:shark.util/MathUtil/randomIntGenerator/#kotlin.random.Random#kotlin.ranges.IntRange/PointingToDeclaration/-shark-bot/shark.util/-math-util/random-int-generator.html
 $dokka.location:shark.util/MathUtil/randomLongGenerator/#kotlin.random.Random#kotlin.ranges.LongRange/PointingToDeclaration/-shark-bot/shark.util/-math-util/random-long-generator.html
-$dokka.location:shark.util/Promise.Companion///PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/index.html
-$dokka.location:shark.util/Promise.Companion/all/#kotlin.Array[shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/all.html
-$dokka.location:shark.util/Promise.Companion/any/#kotlin.Array[shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/any.html
-$dokka.location:shark.util/Promise.Companion/delay/#kotlin.Long#kotlin.coroutines.SuspendFunction0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/delay.html
-$dokka.location:shark.util/Promise.Companion/delay/#kotlin.Long/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/delay.html
-$dokka.location:shark.util/Promise.Companion/delay/#kotlin.time.Duration#kotlin.coroutines.SuspendFunction0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/delay.html
-$dokka.location:shark.util/Promise.Companion/delay/#kotlin.time.Duration/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/delay.html
-$dokka.location:shark.util/Promise.Companion/race/#kotlin.Array[shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/race.html
-$dokka.location:shark.util/Promise.Companion/reject/#kotlin.Throwable/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/reject.html
-$dokka.location:shark.util/Promise.Companion/resolve/#/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/resolve.html
-$dokka.location:shark.util/Promise.Companion/resolve/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/resolve.html
-$dokka.location:shark.util/Promise.Companion/resolve/#shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/resolve.html
-$dokka.location:shark.util/Promise.Companion/withResolvers/#/PointingToDeclaration/-shark-bot/shark.util/-promise/-companion/with-resolvers.html
-$dokka.location:shark.util/Promise///PointingToDeclaration/-shark-bot/shark.util/-promise/index.html
-$dokka.location:shark.util/Promise/await/#/PointingToDeclaration/-shark-bot/shark.util/-promise/await.html
-$dokka.location:shark.util/Promise/awaitSync/#/PointingToDeclaration/-shark-bot/shark.util/-promise/await-sync.html
-$dokka.location:shark.util/Promise/cancel/#/PointingToDeclaration/-shark-bot/shark.util/-promise/cancel.html
-$dokka.location:shark.util/Promise/catch/#kotlin.Function1[kotlin.Throwable,shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise/catch.html
-$dokka.location:shark.util/Promise/catchRun/#kotlin.Function1[kotlin.Throwable,TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-shark-bot/shark.util/-promise/catch-run.html
-$dokka.location:shark.util/Promise/finally/#kotlin.Function0[shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise/finally.html
-$dokka.location:shark.util/Promise/finallyRun/#kotlin.Function0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-shark-bot/shark.util/-promise/finally-run.html
-$dokka.location:shark.util/Promise/getState/#/PointingToDeclaration/-shark-bot/shark.util/-promise/get-state.html
-$dokka.location:shark.util/Promise/join/#/PointingToDeclaration/-shark-bot/shark.util/-promise/join.html
-$dokka.location:shark.util/Promise/on/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]#kotlin.Function1[kotlin.Throwable,shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]?/PointingToDeclaration/-shark-bot/shark.util/-promise/on.html
-$dokka.location:shark.util/Promise/onRun/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]#kotlin.Function1[kotlin.Throwable,TypeParam(bounds=[kotlin.Any?])]?/PointingToDeclaration/-shark-bot/shark.util/-promise/on-run.html
-$dokka.location:shark.util/Promise/then/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise/then.html
-$dokka.location:shark.util/Promise/thenRun/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-shark-bot/shark.util/-promise/then-run.html
-$dokka.location:shark.util/PromiseFunction///PointingToDeclaration/-shark-bot/shark.util/-promise-function/index.html
-$dokka.location:shark.util/PromiseImpl///PointingToDeclaration/-shark-bot/shark.util/-promise-impl/index.html
-$dokka.location:shark.util/PromiseImpl/await/#/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/await.html
-$dokka.location:shark.util/PromiseImpl/awaitSync/#/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/await-sync.html
-$dokka.location:shark.util/PromiseImpl/cancel/#/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/cancel.html
-$dokka.location:shark.util/PromiseImpl/catch/#kotlin.Function1[kotlin.Throwable,shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/catch.html
-$dokka.location:shark.util/PromiseImpl/finally/#kotlin.Function0[shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/finally.html
-$dokka.location:shark.util/PromiseImpl/getState/#/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/get-state.html
-$dokka.location:shark.util/PromiseImpl/join/#/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/join.html
-$dokka.location:shark.util/PromiseImpl/then/#kotlin.Function1[TypeParam(bounds=[kotlin.Any?]),shark.util.Promise[TypeParam(bounds=[kotlin.Any?])]]/PointingToDeclaration/-shark-bot/shark.util/-promise-impl/then.html
-$dokka.location:shark.util/PromiseResolver///PointingToDeclaration/-shark-bot/shark.util/-promise-resolver/index.html
-$dokka.location:shark.util/PromiseResolver/getPromise/#/PointingToDeclaration/-shark-bot/shark.util/-promise-resolver/get-promise.html
-$dokka.location:shark.util/PromiseResolver/reject/#/PointingToDeclaration/-shark-bot/shark.util/-promise-resolver/reject.html
-$dokka.location:shark.util/PromiseResolver/reject/#kotlin.Throwable/PointingToDeclaration/-shark-bot/shark.util/-promise-resolver/reject.html
-$dokka.location:shark.util/PromiseResolver/resolve/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/-shark-bot/shark.util/-promise-resolver/resolve.html
-$dokka.location:shark.util/PromiseState.COMPLETED///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-promise-state/-c-o-m-p-l-e-t-e-d/index.html
-$dokka.location:shark.util/PromiseState.IDLE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-promise-state/-i-d-l-e/index.html
-$dokka.location:shark.util/PromiseState.REJECTED///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-promise-state/-r-e-j-e-c-t-e-d/index.html
-$dokka.location:shark.util/PromiseState.RUNNING///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-promise-state/-r-u-n-n-i-n-g/index.html
-$dokka.location:shark.util/PromiseState.STOPPED///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-promise-state/-s-t-o-p-p-e-d/index.html
-$dokka.location:shark.util/PromiseState///PointingToDeclaration/-shark-bot/shark.util/-promise-state/index.html
-$dokka.location:shark.util/PromiseState/done/#/PointingToDeclaration/-shark-bot/shark.util/-promise-state/done.html
-$dokka.location:shark.util/PromiseState/entries/#/PointingToDeclaration/-shark-bot/shark.util/-promise-state/entries.html
-$dokka.location:shark.util/PromiseState/valueOf/#kotlin.String/PointingToDeclaration/-shark-bot/shark.util/-promise-state/value-of.html
-$dokka.location:shark.util/PromiseState/values/#/PointingToDeclaration/-shark-bot/shark.util/-promise-state/values.html
 $dokka.location:shark.util/RequestMethod.DELETE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-request-method/-d-e-l-e-t-e/index.html
 $dokka.location:shark.util/RequestMethod.GET///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-request-method/-g-e-t/index.html
 $dokka.location:shark.util/RequestMethod.HEAD///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-shark-bot/shark.util/-request-method/-h-e-a-d/index.html
@@ -623,7 +560,6 @@ $dokka.location:shark.util/ResponseMapping/url/#/PointingToDeclaration/-shark-b
 $dokka.location:shark.util/ResponseMapping/yaml/#/PointingToDeclaration/-shark-bot/shark.util/-response-mapping/yaml.html
 $dokka.location:shark.util/StringAnyNullableMapTypeReference///PointingToDeclaration/-shark-bot/shark.util/-string-any-nullable-map-type-reference/index.html
 $dokka.location:shark.util/StringTypeReference///PointingToDeclaration/-shark-bot/shark.util/-string-type-reference/index.html
-$dokka.location:shark.util/Void///PointingToDeclaration/-shark-bot/shark.util/-void/index.html
 $dokka.location:shark.util/WebUtil///PointingToDeclaration/-shark-bot/shark.util/-web-util/index.html
 $dokka.location:shark.util/WebUtil/template/#kotlin.String#org.thymeleaf.templatemode.TemplateMode#kotlin.Function1[kotlin.collections.MutableMap[kotlin.String,kotlin.Any?],kotlin.Unit]/PointingToDeclaration/-shark-bot/shark.util/-web-util/template.html
 $dokka.location:shark.util/WebUtil/template/#shark.data.registry.ResourceLocation#org.thymeleaf.templatemode.TemplateMode#kotlin.Function1[kotlin.collections.MutableMap[kotlin.String,kotlin.Any?],kotlin.Unit]/PointingToDeclaration/-shark-bot/shark.util/-web-util/template.html
@@ -675,24 +611,6 @@ $dokka.location:shark/WrappedSharkEvent///PointingToDeclaration/-shark-bot/shar
 $dokka.location:shark/WrappedSharkEvent/WrappedSharkEvent/#shark.event.WrappedEvent[shark.event.Event]#shark.SharkBot/PointingToDeclaration/-shark-bot/shark/-wrapped-shark-event/-wrapped-shark-event.html
 $dokka.location:shark/WrappedSharkEvent/shark/#/PointingToDeclaration/-shark-bot/shark/-wrapped-shark-event/shark.html
 $dokka.location:shark/WrappedSharkEvent/wrappedSharkEvent/#/PointingToDeclaration/-shark-bot/shark/-wrapped-shark-event/wrapped-shark-event.html
-$dokka.location:sharkbot.application////PointingToDeclaration/-shark-bot/sharkbot.application/index.html
-$dokka.location:sharkbot.application/LoginError///PointingToDeclaration/-shark-bot/sharkbot.application/-login-error/index.html
-$dokka.location:sharkbot.application/LoginError/LoginError/#kotlin.String#kotlin.String?/PointingToDeclaration/-shark-bot/sharkbot.application/-login-error/-login-error.html
-$dokka.location:sharkbot.application/LoginError/user/#/PointingToDeclaration/-shark-bot/sharkbot.application/-login-error/user.html
-$dokka.location:sharkbot.application/LoginSystem///PointingToDeclaration/-shark-bot/sharkbot.application/-login-system/index.html
-$dokka.location:sharkbot.application/LoginSystem/auth/#jakarta.servlet.http.HttpServletRequest#kotlin.Function1[shark.data.entity.user.User,kotlin.Any?]/PointingToDeclaration/-shark-bot/sharkbot.application/-login-system/auth.html
-$dokka.location:sharkbot.application/LoginSystem/auth/#kotlin.String#kotlin.String#kotlin.Function1[shark.data.entity.user.User,kotlin.Any?]/PointingToDeclaration/-shark-bot/sharkbot.application/-login-system/auth.html
-$dokka.location:sharkbot.application/LoginSystem/login/#kotlin.String#kotlin.String/PointingToDeclaration/-shark-bot/sharkbot.application/-login-system/login.html
-$dokka.location:sharkbot.application/LoginSystem/loginMapping/#jakarta.servlet.http.HttpServletResponse#kotlin.String?#kotlin.String#kotlin.String/PointingToDeclaration/-shark-bot/sharkbot.application/-login-system/login-mapping.html
-$dokka.location:sharkbot.application/LoginSystem/loginPage/#kotlin.String#kotlin.String?/PointingToDeclaration/-shark-bot/sharkbot.application/-login-system/login-page.html
-$dokka.location:sharkbot.application/LoginSystem/tokenLogin/#kotlin.String/PointingToDeclaration/-shark-bot/sharkbot.application/-login-system/token-login.html
-$dokka.location:sharkbot.application/WebPanel///PointingToDeclaration/-shark-bot/sharkbot.application/-web-panel/index.html
-$dokka.location:sharkbot.application/WebPanel/WebPanel/#/PointingToDeclaration/-shark-bot/sharkbot.application/-web-panel/-web-panel.html
-$dokka.location:sharkbot.application/WebPanel/guildView/#jakarta.servlet.http.HttpServletRequest#kotlin.String?#kotlin.Long/PointingToDeclaration/-shark-bot/sharkbot.application/-web-panel/guild-view.html
-$dokka.location:sharkbot.application/WebPanel/homeView/#jakarta.servlet.http.HttpServletRequest#kotlin.String?/PointingToDeclaration/-shark-bot/sharkbot.application/-web-panel/home-view.html
-$dokka.location:sharkbot.application/WebPanel/ifActive/#kotlin.Function0[TypeParam(bounds=[kotlin.Any?])]/PointingToDeclaration/-shark-bot/sharkbot.application/-web-panel/if-active.html
-$dokka.location:sharkbot.application/WebPanel/isEnabled/#/PointingToDeclaration/-shark-bot/sharkbot.application/-web-panel/is-enabled.html
-$dokka.location:sharkbot.application/WebPanel/resource/#kotlin.String#kotlin.String/PointingToDeclaration/-shark-bot/sharkbot.application/-web-panel/resource.html
 $dokka.location:sharkbot.command////PointingToDeclaration/-shark-bot/sharkbot.command/index.html
 $dokka.location:sharkbot.command/LocaleCommand///PointingToDeclaration/-shark-bot/sharkbot.command/-locale-command/index.html
 $dokka.location:sharkbot.command/LocaleCommand/LocaleCommand/#/PointingToDeclaration/-shark-bot/sharkbot.command/-locale-command/-locale-command.html
@@ -747,7 +665,6 @@ shark.network.chat
 shark.network.command
 shark.util
 sharkbot
-sharkbot.application
 sharkbot.command
 sharkbot.data.resource
 sharkbot.registry
